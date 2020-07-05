@@ -7,3 +7,5 @@ class Post(models.Model):
     subtitle = models.CharField(max_length=200)
     content = models.TextField()
 
+
+
