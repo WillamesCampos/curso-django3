@@ -3,6 +3,17 @@ from django.db import models
 
 class Post(models.Model):
 
+    class Categorias(models.TextChoices):
+        TECH = 'TC', 'Technology'
+        CR = 'CR', 'Curiosity'
+        GR = 'GR', 'Geral'
+
+    categories = models.CharField(
+        max_length=2,
+        choices=Categorias.choices,
+        default=Categorias.GR
+    )
+    deleted = models.BooleanField(default=True)
     title = models.CharField(max_length=100)
     subtitle = models.CharField(max_length=200)
     content = models.TextField()
@@ -14,5 +25,4 @@ class Post(models.Model):
         return self.title + self.subtitle
 
     full_name.admin_order_field = 'title' # admin_order_field torna o campo ordenável no django admin
-
 
