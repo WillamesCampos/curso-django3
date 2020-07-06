@@ -7,5 +7,12 @@ class Post(models.Model):
     subtitle = models.CharField(max_length=200)
     content = models.TextField()
 
+    def __str__(self):
+        return self.title
+
+    def full_name(self): #não tem funcionalidade, só para fins didáticos
+        return self.title + self.subtitle
+
+    full_name.admin_order_field = 'title' # admin_order_field torna o campo ordenável no django admin
 
 
